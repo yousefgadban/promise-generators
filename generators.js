@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const geterator1 = function *() {
+const getDataFromAPI1 = function *() {
     const uri = 'https://api.chucknorris.io/jokes/random';
     const response = yield fetch(uri);
     const responseData = yield response.json();
@@ -9,7 +9,7 @@ const geterator1 = function *() {
 }
 
 
-const geterator2 = function *() {
+const getDataFromAPI2 = function *() {
     const uri = 'https://api.chucknorris.io/jokes/random';
     const response = yield fetch(uri);
     const responseData = yield response.json();
@@ -31,8 +31,8 @@ function run(generator) {
 
 
 const loadData = () => {
-    run(geterator1).then((res1) => {
-        run(geterator2).then((res2) => {
+    run(getDataFromAPI1).then((res1) => {
+        run(getDataFromAPI2).then((res2) => {
             console.log({a: res1, b: res2});
             return {a: res1, b: res2};
         })
